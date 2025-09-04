@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta c .submit-btn:hover { background: #005a8b; } .radio-group {
+    margin-bottom: 20px; } .radio-group label { font-weight: bold;
+    margin-bottom: 10px; } .radio-option { display: flex; align-items: center;
+    margin-bottom: 8px; } .radio-option input[type="radio"] { width: auto;
+    margin-right: 8px; margin-bottom: 0; } .radio-option label { font-weight:
+    normal; margin-bottom: 0; cursor: pointer; }set="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Form with Select Elements</title>
     <style>
@@ -154,6 +159,105 @@
           </select>
         </div>
 
+        <!-- Radio Button Duplicates -->
+        <div class="radio-group">
+          <label>Title (Radio Buttons):</label>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="title-radio-mr"
+              name="titleRadio"
+              value="mr"
+            />
+            <label for="title-radio-mr">Mr</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="title-radio-mrs"
+              name="titleRadio"
+              value="mrs"
+            />
+            <label for="title-radio-mrs">Mrs</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="title-radio-ms"
+              name="titleRadio"
+              value="ms"
+            />
+            <label for="title-radio-ms">Ms</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="title-radio-miss"
+              name="titleRadio"
+              value="miss"
+            />
+            <label for="title-radio-miss">Miss</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="title-radio-dr"
+              name="titleRadio"
+              value="dr"
+            />
+            <label for="title-radio-dr">Dr</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="title-radio-prof"
+              name="titleRadio"
+              value="prof"
+            />
+            <label for="title-radio-prof">Prof</label>
+          </div>
+        </div>
+
+        <div class="radio-group">
+          <label>Gender (Radio Buttons):</label>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="gender-radio-male"
+              name="genderRadio"
+              value="male"
+            />
+            <label for="gender-radio-male">Male</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="gender-radio-female"
+              name="genderRadio"
+              value="female"
+            />
+            <label for="gender-radio-female">Female</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="gender-radio-other"
+              name="genderRadio"
+              value="other"
+            />
+            <label for="gender-radio-other">Other</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="gender-radio-prefer-not"
+              name="genderRadio"
+              value="prefer-not-to-say"
+            />
+            <label for="gender-radio-prefer-not">Prefer not to say</label>
+          </div>
+        </div>
+
         <button type="submit" class="submit-btn">Submit Application</button>
       </form>
     </div>
@@ -174,6 +278,17 @@
               this.options[this.selectedIndex].text
             })`
           );
+        });
+      });
+
+      // Log radio button changes for debugging
+      document.querySelectorAll("input[type='radio']").forEach((radio) => {
+        radio.addEventListener("change", function () {
+          if (this.checked) {
+            console.log(
+              `Radio button ${this.name} changed to: ${this.value} (${this.nextElementSibling.textContent})`
+            );
+          }
         });
       });
     </script>
