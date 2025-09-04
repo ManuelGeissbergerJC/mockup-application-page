@@ -3,145 +3,179 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Form for Autofill Extension</title>
+    <title>Test Form with Select Elements</title>
     <style>
       body {
         font-family: Arial, sans-serif;
         max-width: 600px;
         margin: 50px auto;
         padding: 20px;
+        background-color: #f5f5f5;
       }
-
+      .form-container {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
       .form-group {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
-
       label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
+        color: #333;
       }
-
-      input {
+      input,
+      select {
         width: 100%;
         padding: 10px;
         border: 1px solid #ddd;
         border-radius: 4px;
-        font-size: 16px;
+        font-size: 14px;
+        box-sizing: border-box;
       }
-
-      h1 {
-        color: #007cba;
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #007cba;
       }
-
-      .instructions {
-        background: #f0f8ff;
-        padding: 15px;
+      .submit-btn {
+        background: #007cba;
+        color: white;
+        border: none;
+        padding: 12px 30px;
         border-radius: 4px;
-        margin-bottom: 30px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+      .submit-btn:hover {
+        background: #005a8b;
       }
     </style>
   </head>
   <body>
-    <h1>Test Form for Application Assistant Plugin</h1>
+    <div class="form-container">
+      <h2>Job Application Form</h2>
+      <form id="applicationForm">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <select id="title" name="title">
+            <option value="">-- Select Title --</option>
+            <option value="mr">Mr</option>
+            <option value="mrs">Mrs</option>
+            <option value="ms">Ms</option>
+            <option value="miss">Miss</option>
+            <option value="dr">Dr</option>
+            <option value="prof">Prof</option>
+          </select>
+        </div>
 
-    <div class="instructions">
-      <h3>Testing Instructions:</h3>
-      <ol>
-        <li>Open the extension popup and save your information</li>
-        <li>Refresh this page</li>
-        <li>Open browser console (F12) to see debug logs</li>
-        <li>The extension should detect the fields and offer to autofill</li>
-      </ol>
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" />
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country:</label>
+          <select id="country" name="country" required>
+            <option value="">-- Select Country --</option>
+            <option value="US">United States</option>
+            <option value="DE">Germany</option>
+            <option value="FR">France</option>
+            <option value="CH">Switzerland</option>
+            <option value="AT">Austria</option>
+            <option value="IT">Italy</option>
+            <option value="UK">United Kingdom</option>
+            <option value="CA">Canada</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="nationality">Nationality:</label>
+          <select id="nationality" name="nationality">
+            <option value="">-- Select Nationality --</option>
+            <option value="american">American</option>
+            <option value="german">German</option>
+            <option value="french">French</option>
+            <option value="swiss">Swiss</option>
+            <option value="austrian">Austrian</option>
+            <option value="italian">Italian</option>
+            <option value="british">British</option>
+            <option value="canadian">Canadian</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Street Address:</label>
+          <input type="text" id="address" name="address" />
+        </div>
+
+        <div class="form-group">
+          <label for="zip">Postal Code:</label>
+          <input type="text" id="zip" name="zip" />
+        </div>
+
+        <div class="form-group">
+          <label for="birthDate">Date of Birth:</label>
+          <input type="date" id="birthDate" name="birthDate" />
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender">
+            <option value="">-- Select Gender --</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="prefer-not-to-say">Prefer not to say</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Application</button>
+      </form>
     </div>
 
-    <form>
-      <div class="form-group">
-        <label for="firstName">First Name:</label>
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          placeholder="Enter first name"
-        />
-      </div>
+    <script>
+      document
+        .getElementById("applicationForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted! (This is just a test)");
+        });
 
-      <div class="form-group">
-        <label for="lastName">Last Name:</label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          placeholder="Enter last name"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" placeholder="Enter email address" />
-      </div>
-
-      <div class="form-group">
-        <label for="emailContact">Contact Email:</label>
-        <input type="text" id="emailContact" name="email_contact" placeholder="Alternative email" />
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone:</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="Enter phone number"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="city">City:</label>
-        <input type="text" id="city" name="city" placeholder="Enter city" />
-      </div>
-
-      <div class="form-group">
-        <label for="address">Street Address:</label>
-        <input
-          type="text"
-          id="address"
-          name="address"
-          placeholder="Enter street address"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="mailingAddress">Mailing Address:</label>
-        <input type="text" id="mailingAddress" name="mailing_address" placeholder="P.O. Box or different address" />
-      </div>
-
-      <div class="form-group">
-        <label for="zip">ZIP Code:</label>
-        <input type="text" id="zip" name="zip" placeholder="Enter ZIP code" />
-      </div>
-
-      <div class="form-group">
-        <label for="country">Country:</label>
-        <input
-          type="text"
-          id="country"
-          name="country"
-          placeholder="Enter country"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="nationality">Nationality:</label>
-        <input
-          type="text"
-          id="nationality"
-          name="nationality"
-          placeholder="Enter nationality"
-        />
-      </div>
-
-      <button type="submit">Submit (for testing)</button>
-    </form>
+      // Log select changes for debugging
+      document.querySelectorAll("select").forEach((select) => {
+        select.addEventListener("change", function () {
+          console.log(
+            `Select ${this.id} changed to: ${this.value} (${
+              this.options[this.selectedIndex].text
+            })`
+          );
+        });
+      });
+    </script>
   </body>
 </html>
