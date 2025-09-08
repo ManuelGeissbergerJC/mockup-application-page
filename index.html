@@ -318,7 +318,7 @@
           ) {
             const extensionId = "cadniocmofcbnacfjaiihbpeobabhjlj";
 
-            chrome.runtime.sendMessage(extensionId, (response) => {
+            chrome.runtime.sendMessage(extensionId, "hi", (response) => {
               console.log("Extension responded:", response);
             });
           } else {
