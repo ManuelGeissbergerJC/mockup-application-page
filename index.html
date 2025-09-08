@@ -318,13 +318,9 @@
           ) {
             const extensionId = "cadniocmofcbnacfjaiihbpeobabhjlj";
 
-            chrome.runtime.sendMessage(
-              extensionId,
-              { type: "open-popover", data: "test" },
-              (response) => {
-                console.log("Extension responded:", response);
-              }
-            );
+            chrome.runtime.sendMessage(extensionId, (response) => {
+              console.log("Extension responded:", response);
+            });
           } else {
             alert(
               "chrome.runtime.sendMessage is not available. Are you running this in a Chrome extension context?"
