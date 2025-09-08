@@ -62,6 +62,21 @@
     </style>
   </head>
   <body>
+    <button
+      id="openPopoverBtn"
+      style="
+        margin-bottom: 20px;
+        background: #007cba;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      "
+    >
+      Open Popover (Extension)
+    </button>
     <div class="form-container">
       <h2>Job Application Form</h2>
       <form id="applicationForm">
@@ -291,6 +306,20 @@
           }
         });
       });
+
+      // send message to extension
+      document
+        .getElementById("openPopoverBtn")
+        .addEventListener("click", function () {
+          // Send a message to the extension to open the popover
+          chrome.runtime.sendMessage({ action: "openPopover" }, (response) => {
+            if (response && response.status === "popoverOpened") {
+              console.log("Popover opened successfully.");
+            } else {
+              console.error("Failed to open popover.");
+            }
+          });
+        });
     </script>
   </body>
 </html>
